@@ -1,4 +1,5 @@
 <?php
+
 $host = "localhost";
 $usuario = "root";
 $senha = "";
@@ -29,6 +30,7 @@ $user = $resultadoSelect->fetch_assoc();
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
   <link rel="stylesheet" href="../Components/css/estilo.css">
   <link rel="stylesheet" href="../Components/css/homecss.css">
+
   <style>
   </style>
 </head>
@@ -78,7 +80,7 @@ $user = $resultadoSelect->fetch_assoc();
         
       <?php endforeach; ?>
 
-      <a href="../controller/atualiza.php" class="btn">Atualizar Perfil</a>
+      <a href="../controller/atualiza.php" class="btn">Atualizar Perfil </a>
       <a href="../view/Index.php" class="delete-btn">Sair</a> 
       <div class="flex-btn">
         <a href="../view/Index.php" class="option-btn">login</a>
@@ -88,6 +90,7 @@ $user = $resultadoSelect->fetch_assoc();
 
   </section>
   <?php
+
   ?>
 </body>
 

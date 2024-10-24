@@ -2,13 +2,13 @@
 <html lang="en">
 
 <head>
-<meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../Components/css/main.css">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-    <link rel="stylesheet" href="../Components/css/homecss.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="../Components/css/main.css">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+  <link rel="stylesheet" href="../Components/css/homecss.css">
 
-    <title>Planeta Festival</title>
+  <title>Planeta Festival</title>
   <title>Planeta Festival-atualiza</title>
 </head>
 <style>
@@ -38,10 +38,10 @@
       </li>
 
       <li>
-      <form class="search-container" action="../view/busca.php" method="get">
-            <input type="text" name="busca" id="search-input" class="search-input" placeholder="Digite sua pesquisa...">
-            <button type="submit" class="search-button">Pesquisar</button>
-          </form>
+        <form class="search-container" action="../view/busca.php" method="get">
+          <input type="text" name="busca" id="search-input" class="search-input" placeholder="Digite sua pesquisa...">
+          <button type="submit" class="search-button">Pesquisar</button>
+        </form>
       </li>
       <li>
         <a href="../view/pag_inicial.php"><svg id="svg02" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--!Font Awesome Free 6.5.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.-->
@@ -57,6 +57,8 @@
     <div id="CadastroCliente"> Atualizar dados</div>
 
     <?php
+    session_start();
+    $id = $_SESSION['id'];
 
     $resultadoSelect = 0;
     $resultadoUpdate;
@@ -68,17 +70,18 @@
     $database = "ProjetoSoftware";
 
 
+
+
     try {
       $conn = new mysqli($hostname, $username, $password, $database);
     } catch (Exception $e) {
       die("Erro ao conectar: " . $e->getMessage());
     }
 
-    if (isset($_GET['id'])) {
-      $sql = "SELECT * FROM cadastro WHERE id = {$_GET['id']}";
-      $resultadoSelect = $conn->query($sql);
-    } else if (isset($_POST['submit'])) {
-      $id = $_POST['id'];
+
+    $sql = "SELECT * FROM cadastro WHERE id = {$id}";
+    $resultadoSelect = $conn->query($sql);
+    if (isset($_POST['submit'])) {
       $nome = $_POST['nome'];
       $email = $_POST['email'];
       $senha = $_POST['senha'];

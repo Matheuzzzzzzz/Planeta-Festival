@@ -34,15 +34,15 @@
                 </li>
 
                 <li>
-                <form class="search-container" action="../view/busca.php" method="get">
-            <input type="text" name="busca" id="search-input" class="search-input" placeholder="Digite sua pesquisa...">
-            <button type="submit" class="search-button">Pesquisar</button>
-          </form>
+                    <form class="search-container" action="../view/busca.php" method="get">
+                        <input type="text" name="busca" id="search-input" class="search-input" placeholder="Digite sua pesquisa...">
+                        <button type="submit" class="search-button">Pesquisar</button>
+                    </form>
                 </li>
                 <li>
                     <a href="Index.php"><svg id="svg02" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--!Font Awesome Free 6.5.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.-->
                             <path d="M224 256A128 128 0 1 0 224 0a128 128 0 1 0 0 256zm-45.7 48C79.8 304 0 383.8 0 482.3C0 498.7 13.3 512 29.7 512H418.3c16.4 0 29.7-13.3 29.7-29.7C448 383.8 368.2 304 269.7 304H178.3z" />
-                        
+
                         </svg></a>
                 </li>
             </ul>
@@ -71,8 +71,8 @@
                     </svg>
                     Produtos de qualidade.</li>
             </ul>
-            <a href="cadastrocliente.php"><button  id="btn1"> Cadastra-se como Cliente</button></a>
-            <a  href="cadastroespaco.php"> <button id="btn2"> Cadastra-se seu espaço</button></a>
+            <a href="cadastrocliente.php"><button id="btn1"> Cadastra-se como Cliente</button></a>
+            <a href="cadastroespaco.php"> <button id="btn2"> Cadastra-se seu espaço</button></a>
         </div>
         <div class="globe"></div>
 
@@ -85,33 +85,52 @@
     <section class="sect">
         <p>ESPAÇO DE EVENTOS</p>
         <hr>
-        
 
 
+        <?php
+
+        $hostname = "localhost";
+        $username = "root";
+        $password = "";
+        $database = "ProjetoSoftware";
+
+
+        try {
+            $conn = new mysqli($hostname, $username, $password, $database);
+        } catch (Exception $e) {
+            die("Erro ao conectra: " . $e->getMessage());
+        }
+
+
+
+        $sql = "SELECT * FROM cadastroespaco";
+        $resultado = $conn->query($sql);
+        ?>
     </section>
-    <article class="products">
-
-        <div class="bloco">
-            <img src="" alt="" class="divimage">
-            <p class="description"></p>
-            </img>
-        </div>
-    </article>
+    <section id="products" style="display: flex;">
+        <?php foreach ($resultado as $linha) : ?>
+            <div class="bloco" style="width: fit-content;">
+                <img src="<?= $linha['imagem'] ?>" alt="" class="divimage">
+                <p class="description" style="color: white;"><?= $linha['descricao'] ?></p>
+                </img>
+            </div>
+        <?php endforeach; ?>
+    </section>
     <footer class="pe">
         <div id="borda">
-        <div class="promo">
-            <h3>Cadastre seu espaço para garantir clientes!</h3>
-            
-            <div>
-            <img src="https://images.vexels.com/media/users/3/205157/isolated/preview/3a1d0d70d14ba68cd27271c889618e51-ilustracao-do-espaco-astronauta.png" alt="">   <a href="">
-                Acesse Aqui
-            </a>
+            <div class="promo">
+                <h3>Cadastre seu espaço para garantir clientes!</h3>
+
+                <div>
+                    <img src="https://images.vexels.com/media/users/3/205157/isolated/preview/3a1d0d70d14ba68cd27271c889618e51-ilustracao-do-espaco-astronauta.png" alt=""> <a href="">
+                        Acesse Aqui
+                    </a>
+                </div>
             </div>
+            <a href="cadastrocliente.php"><button id="btnentrar">Entrar</button></a>
+            <a href="cadastroespaco.php"><button id="btncadastrov">Cadastra-se</button></a>
         </div>
-        <a href="cadastrocliente.php"><button id="btnentrar">Entrar</button></a>
-        <a href="cadastroespaco.php"><button id="btncadastrov">Cadastra-se</button></a>
-        </div>
-        
+
         <ul id="ulfooter">
             <li>All Access
                 <ul class="listbelow">
