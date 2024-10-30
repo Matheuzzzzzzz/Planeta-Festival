@@ -95,7 +95,7 @@
                         <label for="cidade" class="form-label">Cidade:</label><br>
                         <input type="text" class="form-control" id="cidade" name="cidade" placeholder="Digite o nome da cidade" required><br>
                     </div>
-                </div><br>
+                </div>
                 <button id="btnconfig" type="submit" class="btn btn-primary">Inserir</button>
                <div class="liink"> <a href="../controller/dadosespaco.php" class="btn btn-primary">Ver Dados</a></div>
             </form>
